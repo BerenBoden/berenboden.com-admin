@@ -14,10 +14,10 @@ const Authentication = <P extends object>(
   return (props: P) => {
     const token = useSelector((state: RootState) => state.auth.token);
 
-    if (token) {
+    if (!token) {
       return <WrappedComponent {...props} />;
     } else {
-      return <Navigate to="/login" replace />;
+      return <Navigate to="/" replace />;
     }
   };
 };

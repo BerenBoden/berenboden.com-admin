@@ -1,5 +1,8 @@
 import { Outlet } from "react-router-dom";
+import Authentication from "./Authentication";
 
-export default function index() {
+function index() {
   return <Outlet />;
 }
+
+export default Authentication(index);

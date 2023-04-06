@@ -1,9 +1,12 @@
 import { LockClosedIcon } from "@heroicons/react/20/solid";
 import { useForm } from "react-hook-form";
 import { useLoginMutation } from "../store/services/auth";
+import { useDispatch } from "react-redux";
+import { setAuthenticated } from "../store/slices/auth";
 
 export default function Example() {
   const [login, { isLoading }] = useLoginMutation();
+  const dispatch = useDispatch();
   const {
     register,
     handleSubmit,
@@ -13,8 +16,8 @@ export default function Example() {
   } = useForm();
   const onSubmit = async (data: any) => {
     try {
-      const user = await login(data).unwrap();
-      console.log(user);
+      const { accessToken, message } = await login(data).unwrap();
+      dispatch(setAuthenticated({ token: accessToken }));
     } catch (err: any) {
       err.data.error.forEach((error: any) => {
         setError(error.param, { message: error.message });

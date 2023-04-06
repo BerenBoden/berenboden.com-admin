@@ -5,6 +5,7 @@ export const api = createApi({
   reducerPath: "api",
   baseQuery: fetchBaseQuery({
     baseUrl: import.meta.env.VITE_SERVER_API,
+    credentials: "include",
     prepareHeaders: (headers, { getState }) => {
       const token = (getState() as RootState).auth.token;
       if (token) {
@@ -15,4 +16,3 @@ export const api = createApi({
   }),
   endpoints: (builder) => ({}),
 });
-

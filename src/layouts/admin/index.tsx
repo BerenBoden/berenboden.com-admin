@@ -5,12 +5,12 @@ import { Bars3CenterLeftIcon } from "@heroicons/react/24/outline";
 import Sidebar from "./Sidebar";
 import { useLocation } from "react-router-dom";
 import Header from "./Header";
+import Authentication from "./Authentication";
 
-export default function index() {
+function index() {
   const location = useLocation();
   const path = location.pathname.split("/")[1];
   const [sidebarOpen, setSidebarOpen] = useState(false);
-
   return (
     <>
       <div className="min-h-full">
@@ -41,3 +41,5 @@ export default function index() {
     </>
   );
 }
+
+export default Authentication(index);
