@@ -4,7 +4,7 @@ import {
   Route,
   createRoutesFromElements,
 } from "react-router-dom";
-import Admin from "./layouts/admin/Admin";
+import Admin from "./layouts/admin";
 import Public from "./layouts/public";
 import routes from "./routes";
 

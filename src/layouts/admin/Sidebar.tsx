@@ -1,17 +1,12 @@
-import { useState, Fragment } from "react";
-import { Dialog, Menu, Transition } from "@headlessui/react";
+import { Fragment } from "react";
+import { Dialog, Transition } from "@headlessui/react";
 import { Link } from "react-router-dom";
 import routes from "../../routes";
-import {
-  Bars3CenterLeftIcon,
-  BellIcon,
-  XMarkIcon,
-} from "@heroicons/react/24/outline";
+import { XMarkIcon } from "@heroicons/react/24/outline";
 import Image from "../../components/base/Image";
 import { classNames } from "../../utils/classNames";
 
-export default function Sidebar() {
-  const [sidebarOpen, setSidebarOpen] = useState(false);
+export default function Sidebar({ sidebarOpen, setSidebarOpen, path }: any) {
   return (
     <>
       <Transition.Root show={sidebarOpen} as={Fragment}>
@@ -83,12 +78,12 @@ export default function Sidebar() {
                         key={item.name}
                         to={item.path}
                         className={classNames(
-                          item?.current
+                          path === item.path
                             ? "bg-cyan-800 text-white"
                             : "text-cyan-100 hover:bg-cyan-600 hover:text-white",
-                          "group flex items-center rounded-md px-2 py-2 text-base font-medium"
+                          "group flex items-center rounded-md px-2 py-2 text-sm font-medium"
                         )}
-                        aria-current={item?.current ? "page" : undefined}
+                        aria-current={path === item.path ? "page" : undefined}
                       >
                         <item.icon
                           className="mr-4 h-6 w-6 flex-shrink-0 text-cyan-200"
@@ -129,12 +124,12 @@ export default function Sidebar() {
                   key={item.name}
                   to={item.path}
                   className={classNames(
-                    item?.current
+                    path === item.path
                       ? "bg-cyan-800 text-white"
                       : "text-cyan-100 hover:bg-cyan-600 hover:text-white",
-                    "group flex items-center rounded-md px-2 py-2 text-sm font-medium leading-6"
+                    "group flex items-center rounded-md px-2 py-2 text-sm font-medium"
                   )}
-                  aria-current={item?.current ? "page" : undefined}
+                  aria-current={path === item.path ? "page" : undefined}
                 >
                   <item.icon
                     className="mr-4 h-6 w-6 flex-shrink-0 text-cyan-200"

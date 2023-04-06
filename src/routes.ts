@@ -17,7 +17,7 @@ const routes = {
     {
       name: "Dashboard",
       element: Dashboard,
-      path: "/",
+      path: "",
       icon: HomeIcon,
     },
     {
